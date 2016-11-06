@@ -1,5 +1,9 @@
 // public/core.js
+console.info ("## core.js loaded" );
+
 var scotchTodo = angular.module('scotchTodo', []);
+
+/*
 
 function mainController($scope, $http) {
     $scope.formData = {};
@@ -40,3 +44,5 @@ function mainController($scope, $http) {
     };
 
 }
+
+*/
