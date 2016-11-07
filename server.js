@@ -1,5 +1,7 @@
 // server.js
 
+    console.log("< Info > Start up ");
+
     // set up ========================
     var express  = require('express');
     var app      = express();                               // create our app w/ express
@@ -13,6 +15,20 @@
     // configuration =================
 
     //mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
+    mongoose.connect('mongodb://localhost/test');
+    var db = mongoose.connection;
+    //db.on('error', console.error.bind(console, 'connection error:'));
+
+
+   db.on('error', function() {
+        // we're connected!
+        console.log (" mongoose we're NOT connected!");
+    });
+
+    db.once('open', function() {
+        // we're connected!
+        console.log (" mongoose we're connected!");
+    });
 
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
